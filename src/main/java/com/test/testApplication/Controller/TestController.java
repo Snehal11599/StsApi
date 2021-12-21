@@ -1,7 +1,9 @@
 package com.test.testApplication.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.test.testApplication.controller.entity.Student;
+
 import com.test.testApplication.dto.StudentDto;
 import com.test.testApplication.dto.TestResponse;
 import com.test.testApplication.service.TestService;
@@ -37,17 +39,11 @@ public class TestController {
 		
 	}
 	
-	
-	
 	@GetMapping("/getusers")
 	public List <StudentDto> getAllStudent() {
-		
+
 		 return this.testService.getAllStudent();
-	
-	
-	
-	
-	
+
 
 }
 }

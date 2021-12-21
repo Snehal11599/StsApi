@@ -8,8 +8,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.test.testApplication.controller.entity.Student;
+
 import com.test.testApplication.dto.StudentDto;
+import com.test.testApplication.entity.Student;
 import com.test.testApplication.repository.TestRepository;
 
 @Service

@@ -1,7 +1,8 @@
-C:\Users\Dell\Downloads\testApplication\src\main\java\com\test\testApplication\entity\Student.java
-C:\Users\Dell\Downloads\testApplication\src\main\java\com\test\testApplication\repository\TestRepository.java
-C:\Users\Dell\Downloads\testApplication\src\main\java\com\test\testApplication\service\TestService.java
-C:\Users\Dell\Downloads\testApplication\src\main\java\com\test\testApplication\dto\TestResponse.java
-C:\Users\Dell\Downloads\testApplication\src\main\java\com\test\testApplication\Controller\TestController.java
-C:\Users\Dell\Downloads\testApplication\src\main\java\com\test\testApplication\dto\StudentDto.java
-C:\Users\Dell\Downloads\testApplication\src\main\java\com\test\testApplication\TestApplication.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\repository\TestRepository.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\TestApplication.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\entity\Student.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\controller\TestController.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\dto\TestResponse.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\service\TestService.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\controller\entity\Student.java
+C:\Users\Hp\Downloads\testApplication\StsApi\src\main\java\com\test\testApplication\dto\StudentDto.java
