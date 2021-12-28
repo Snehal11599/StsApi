@@ -48,11 +48,14 @@ public class TestController {
 }
 	
 	@DeleteMapping("/delete/{id}")
-	 
-	 public void delete(@PathVariable("id") Long id)
-	 {
+
+	public ResponseEntity<TestResponse<?>> delete(@PathVariable("id") Long id)
+	{
+	TestResponse<StudentDto> testResponse = new TestResponse<>();
+	testResponse.setMessage ("delete successfully");
 	testService.delete(id);
-	
-	 }
+	  return new ResponseEntity<>( testResponse  , HttpStatus.OK);
+
+	}
 	 
 }
