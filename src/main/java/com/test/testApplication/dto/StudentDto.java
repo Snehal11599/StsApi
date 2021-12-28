@@ -56,9 +56,6 @@ public class StudentDto {
 		this.email = email;
 	}
 
-	
-	
-
 
 public StudentDto() {
 	

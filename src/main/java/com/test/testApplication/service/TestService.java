@@ -47,5 +47,12 @@ public class TestService {
 		return response;
 
 	}
+	
+	public void delete(Long id) {
+	
+		testRepository.deleteById(id);
+
+		}
+
 
 }
