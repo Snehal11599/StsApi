@@ -1,5 +1,4 @@
 com\test\testApplication\repository\TestRepository.class
-com\test\testApplication\controller\entity\Student.class
 com\test\testApplication\controller\TestController.class
 com\test\testApplication\TestApplication.class
 com\test\testApplication\dto\StudentDto.class
