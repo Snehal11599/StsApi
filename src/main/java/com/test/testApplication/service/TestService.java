@@ -62,13 +62,13 @@ public class TestService {
 
 	    	Student student = testRepository.findByEmail(Email);
 	    	if (student != null) {
-	    	return "email already exists";
+	    	return "success";
 	    	}
 
 	    	} catch (Exception e) {
 	    	e.printStackTrace();
 	    	}
-	    	return "email doesn't exists";
+	    	return "email invalid";
 	    	}
 
 

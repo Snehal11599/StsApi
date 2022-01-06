@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: testApplication
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: admin
+Implementation-Vendor-Id: com.test
+Build-Jdk: 1.8.0_231
+Implementation-URL: https://spring.io/projects/spring-boot/testApplica
+ tion
+Created-By: Maven Integration for Eclipse
+

@@ -2,14 +2,14 @@ server:
   port: 8080
   servlet:
     context-path: /test
-  spring:
+   
+spring:
 
   jpa:
      
     hibernate:
-      ddl-auto: create    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL55Dialect
+      ddl-auto: update
+
 
 
 
