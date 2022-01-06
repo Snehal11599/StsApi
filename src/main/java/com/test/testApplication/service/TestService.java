@@ -57,25 +57,23 @@ public class TestService {
 	}
 	    
 	    
-	      public String validateEamil(String Email) {
+	    public String validateEamil(String Email) {
 	    	try {
-	    		Student student = testRepository.findByEmail(Email);
-	    	    if (student != null) {
-	    	    return "email already exists";
-	    	    }   
-	    	    else {
-	    	    return "email doesn't exists";
-	    	    }
+
+	    	Student student = testRepository.findByEmail(Email);
+	    	if (student != null) {
+	    	return "email already exists";
+	    	}
+
 	    	} catch (Exception e) {
-		    	e.printStackTrace();
-		    	}
-		    	return Email;
+	    	e.printStackTrace();
+	    	}
+	    	return "email doesn't exists";
+	    	}
 
 
 		
-
 	    	
 
 
-}
 }

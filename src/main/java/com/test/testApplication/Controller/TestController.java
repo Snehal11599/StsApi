@@ -2,6 +2,7 @@ package com.test.testApplication.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,7 @@ public class TestController {
 	
 	@Autowired
 	TestService testService;
+
 	
 	//save users
 	@PostMapping(value = "/save")
@@ -74,18 +76,16 @@ public class TestController {
 		
 	}
 	
-	
-	@RequestMapping(value = "/validateEmail/{email}")
-	public ResponseEntity<TestResponse<String>> Validateemail(@PathVariable String email) {
+	//validate email
+	@PostMapping(value = "/validateEmail")
+	public ResponseEntity<TestResponse<String>> Validateemail(@RequestBody StudentDto studentDto) {
 	TestResponse<String> testResponse = new TestResponse<>();
-	String rsponse = testService.validateEamil(email);
+	String rsponse = testService.validateEamil(studentDto.getEmail());
 	testResponse.setHttpsStatus(HttpStatus.OK);
-	testResponse.setMessage("valid email");
+	testResponse.setMessage(rsponse);
 	testResponse.setData(rsponse);
 	return new ResponseEntity<>(testResponse, HttpStatus.OK);
-
-
+	}
 	 
 }
 
-}
