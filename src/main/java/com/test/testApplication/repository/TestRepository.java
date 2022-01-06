@@ -8,4 +8,6 @@ import com.test.testApplication.entity.Student;
 @Repository
 public interface TestRepository extends JpaRepository<Student,Long>{
 
+	Student findByEmail(String email);
+
 }
