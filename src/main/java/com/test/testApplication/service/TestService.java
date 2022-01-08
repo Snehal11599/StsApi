@@ -71,6 +71,11 @@ public class TestService {
 	    	return "email invalid";
 	    	}
 
+		public Object findAll() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 
 		
 	    	

@@ -2,6 +2,7 @@ D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\TestApplicati
 D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\repository\TestRepository.java
 D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\dto\StudentDto.java
 D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\controller\TestController.java
+D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\controller\Valid.java
 D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\dto\TestResponse.java
 D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\service\TestService.java
 D:\Sub_Tenant_server\StsApi\src\main\java\com\test\testApplication\entity\Student.java
