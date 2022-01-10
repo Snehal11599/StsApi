@@ -2,10 +2,15 @@ package com.test.testApplication.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -40,22 +45,51 @@ public class TestService {
      		});
 	    	return response;
 	    }
+         	
+         	
+         	
+       
+         	
+         	
 	      public void delete(Long id) {
 		testRepository.deleteById(id);
  
 		}
 
 
-	    public StudentDto updateUsers(StudentDto studentDto) {
-		Student student = new Student();
-		BeanUtils.copyProperties(studentDto, student);
-		testRepository.save(student);
-		Student savedStudent = testRepository.save(student);
-		BeanUtils.copyProperties(savedStudent, studentDto);
-		return studentDto;
+//	    public StudentDto updateUsers(StudentDto studentDto) {
+//		Student student = new Student();
+//		BeanUtils.copyProperties(studentDto, student);
+//		testRepository.save(student);
+//		Student savedStudent = testRepository.save(student);
+//		BeanUtils.copyProperties(savedStudent, studentDto);
+//		return studentDto;
+//
+//	}
 
-	}
-	    
+	      
+	         public StudentDto updateStudent(Long id, StudentDto studentDto) {
+	          if (testRepository.findById(id).isPresent()){
+	              Student existingStudent = testRepository.findById(id).get();
+
+	              existingStudent.setFirstname(studentDto.getFirstname());
+	              existingStudent.setLastname(studentDto.getLastname());
+	              existingStudent.setEmail(studentDto.getEmail());
+	              existingStudent.setPassword(studentDto.getPassword());
+	              Student updatedStudent = testRepository.save(existingStudent);
+
+	             Student savedStudent = testRepository.save(existingStudent);
+	      		BeanUtils.copyProperties(savedStudent, studentDto);
+	      		return studentDto;
+
+	          }else{
+	              return null;
+	          }
+	      }
+
+	  
+	      
+	      
 	    
 	    public String validateEamil(String Email) {
 	    	try {
@@ -70,10 +104,20 @@ public class TestService {
 	    	}
 	    	return "email doesn't exists";
 	    	}
+	    
+	    
+	    public Student getUserById(long id) {
+			Optional<Student> result =testRepository.findById(id);
+			if(result.isPresent()) {
+				return result.get();
+			}
+			else {
+				return null;
+			}	
+		}
+	}
+	    
 
 
-		
-	    	
 
 
-}

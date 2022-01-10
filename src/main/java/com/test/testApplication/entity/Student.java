@@ -1,5 +1,7 @@
 package com.test.testApplication.entity;
 
+import java.util.stream.Stream;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -82,5 +84,11 @@ this.password = password;
 public Student() {
 
 }
+
+public Stream<Student> stream() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 
 }

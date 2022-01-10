@@ -4,6 +4,8 @@ package com.test.testApplication.dto;
 
 public class StudentDto {
 	
+	private static final String Password = null;
+
 	private long id;
 	
 	private String Firstname;
@@ -21,6 +23,14 @@ public class StudentDto {
 		this.Firstname = firstname;
 		this.Lastname = lastname;
 		this.email = email;
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -60,5 +70,6 @@ public class StudentDto {
 public StudentDto() {
 	
 }
+
 
 }
