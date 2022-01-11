@@ -1,5 +1,6 @@
 package com.test.testApplication.controller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.boot.autoconfigure.web.ServerProperties.Tomcat.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
@@ -35,7 +37,6 @@ public class TestController {
 	
 	@Autowired
 	TestService testService;
-
 	
 	//save users
 	@PostMapping(value = "/save")
@@ -56,21 +57,14 @@ public class TestController {
     return this.testService.getAllStudent(); 
 	}
 	
-	
+
 	//get users by id
+   @GetMapping(value = "/getusers/{id}")
+    public ResponseEntity<StudentDto> getUserById(@PathVariable(name = "id") Long id) {
+    StudentDto student = testService.getUserById(id);
+	return ResponseEntity.ok().body(student);
 	
-	@RequestMapping(value = "/users/{id}")
-	public ResponseEntity<StudentDto> getUserById(@PathVariable(name = "id") Long id) {
-	  Student student = testService.getUserById(id);
-	  
-		StudentDto testResponse= ModelMapper.map(student, StudentDto.class);
-
-		return ResponseEntity.ok().body(testResponse);
-		
-	}
-
-	
-	
+}
 
 	//delete users
 	@RequestMapping("/delete/{id}")
@@ -83,20 +77,7 @@ public class TestController {
 
 	}
 	
-//	
-//     //update users
-//	@PutMapping(value = "/update")
-//	    public ResponseEntity<TestResponse<?>>updateUsers(@RequestBody StudentDto studentDto){
-//		TestResponse<StudentDto> testResponse = new TestResponse<>();
-//		StudentDto savedUserResponse = testService.save(studentDto);
-//		testResponse.setHttpsStatus (HttpStatus.OK);
-//		testResponse.setMessage ("update successfully");
-//		testResponse.setData(savedUserResponse);
-//        return new ResponseEntity<>( testResponse  , HttpStatus.OK);
-//		
-//	}
-	
-	
+    //update users
 	@PutMapping(value="/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<StudentDto> updateStudent(@PathVariable(value = "id") Long id,
@@ -104,6 +85,7 @@ public class TestController {
 		//testResponse.setMessage ("update successfully");
         return new ResponseEntity<>(testService.updateStudent(id, studentDto), HttpStatus.OK);
     }
+	
 
 	//validate email
 	@PostMapping(value = "/validateEmail")

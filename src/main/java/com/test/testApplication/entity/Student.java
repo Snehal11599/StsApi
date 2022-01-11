@@ -9,19 +9,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
-
 @Entity
 @Table(name = "student")
-@Data
 public class Student {
+	   
+	
+	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "id")
-private Long id;
+private Long sid;
 
 @Column(name = "firstname")
 private String firstname;
+
+public Student(Long sid, String firstname, String lastname, String email, String password) {
+	super();
+	this.sid = sid;
+	this.firstname = firstname;
+	this.lastname = lastname;
+	this.email = email;
+	this.password = password;
+}
+
+public Student() {
+	
+}
 
 @Column(name = "lastname")
 private String lastname;
@@ -32,63 +45,44 @@ private String email;
 @Column(name = "password")
 private String password;
 
-public Long getId() {
-return id;
+public Long getSid() {
+	return sid;
 }
 
-public void setId(Long id) {
-this.id = id;
+public void setSid(Long id) {
+	this.sid = sid;
 }
 
 public String getFirstname() {
-return firstname;
+	return firstname;
 }
 
 public void setFirstname(String firstname) {
-this.firstname = firstname;
+	this.firstname = firstname;
 }
 
 public String getLastname() {
-return lastname;
+	return lastname;
 }
 
 public void setLastname(String lastname) {
-this.lastname = lastname;
+	this.lastname = lastname;
 }
 
 public String getEmail() {
-return email;
+	return email;
 }
 
 public void setEmail(String email) {
-this.email = email;
+	this.email = email;
 }
 
 public String getPassword() {
-return password;
+	return password;
 }
 
 public void setPassword(String password) {
-this.password = password;
+	this.password = password;
 }
-
-public Student(Long id, String firstname, String lastname, String email, String password) {
-super();
-this.id = id;
-this.firstname = firstname;
-this.lastname = lastname;
-this.email = email;
-this.password = password;
-}
-
-public Student() {
-
-}
-
-public Stream<Student> stream() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
 
 }

@@ -12,10 +12,6 @@ public interface TestRepository extends JpaRepository<Student,Long>{
 
 	Student findByEmail(String email);
 
-	//ResponseEntity<StudentDto> findOne(Long id);
-
-	StudentDto findOne(Long id);
 	
-	//Student findById(Long id);
 
 }

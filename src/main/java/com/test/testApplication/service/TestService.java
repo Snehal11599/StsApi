@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.test.testApplication.dto.StudentDto;
+import com.test.testApplication.dto.TestResponse;
 import com.test.testApplication.entity.Student;
 import com.test.testApplication.repository.TestRepository;
 
@@ -24,17 +25,18 @@ public class TestService {
 	@Autowired
 	TestRepository testRepository;
   
-	public StudentDto save(StudentDto studentDto) {
-
-		Student student = new Student();
+	
+	   // for save user
+	    public StudentDto save(StudentDto studentDto) {
+	   	Student student = new Student();
 		BeanUtils.copyProperties(studentDto, student);
 		testRepository.save(student);
 		Student savedStudent = testRepository.save(student);
 		BeanUtils.copyProperties(savedStudent, studentDto);
 		return studentDto;
-
-	}
-
+	    }
+	    
+	    //for get all users
          	public List<StudentDto> getAllStudent() {
 		    List<StudentDto> response = new ArrayList<>();
 		    List<Student> list = testRepository.findAll();
@@ -46,75 +48,58 @@ public class TestService {
 	    	return response;
 	    }
          	
+         //for get users by id
+ 	       public StudentDto getUserById(long id) {
+ 	    	StudentDto response=new StudentDto();
+ 			Student result =testRepository.findById(id).orElse(null);
+ 			if(result != null) {
+ 				BeanUtils.copyProperties(result, response);
+ 				return response;
+ 			}
+ 			else {
+ 				return null;
+ 			}	
+ 		} 	
          	
-         	
-       
-         	
-         	
+         //for delete user
 	      public void delete(Long id) {
-		testRepository.deleteById(id);
- 
+		  testRepository.deleteById(id);
+   
 		}
-
-
-//	    public StudentDto updateUsers(StudentDto studentDto) {
-//		Student student = new Student();
-//		BeanUtils.copyProperties(studentDto, student);
-//		testRepository.save(student);
-//		Student savedStudent = testRepository.save(student);
-//		BeanUtils.copyProperties(savedStudent, studentDto);
-//		return studentDto;
-//
-//	}
-
 	      
-	         public StudentDto updateStudent(Long id, StudentDto studentDto) {
-	          if (testRepository.findById(id).isPresent()){
-	              Student existingStudent = testRepository.findById(id).get();
-
-	              existingStudent.setFirstname(studentDto.getFirstname());
-	              existingStudent.setLastname(studentDto.getLastname());
-	              existingStudent.setEmail(studentDto.getEmail());
-	              existingStudent.setPassword(studentDto.getPassword());
-	              Student updatedStudent = testRepository.save(existingStudent);
-
-	             Student savedStudent = testRepository.save(existingStudent);
-	      		BeanUtils.copyProperties(savedStudent, studentDto);
-	      		return studentDto;
-
-	          }else{
-	              return null;
+         //for update users
+	     public StudentDto updateStudent(Long id, StudentDto studentDto) {
+	     if (testRepository.findById(id).isPresent()){
+	     Student existingStudent = testRepository.findById(id).get();
+	     existingStudent.setFirstname(studentDto.getFirstname());
+	     existingStudent.setLastname(studentDto.getLastname());
+	     existingStudent.setEmail(studentDto.getEmail());
+	     existingStudent.setPassword(studentDto.getPassword());
+	     Student updatedStudent = testRepository.save(existingStudent);
+	     Student savedStudent = testRepository.save(existingStudent);
+	     BeanUtils.copyProperties(savedStudent, studentDto);
+	     return studentDto;
+	     }else{
+	            return null;
 	          }
 	      }
-
-	  
-	      
-	      
-	    
-	    public String validateEamil(String Email) {
+	     
+	      //for validation of mail 
+	     public String validateEamil(String Email) {
 	    	try {
 
-	    	Student student = testRepository.findByEmail(Email);
-	    	if (student != null) {
-	    	return "email already exists";
-	    	}
+		        Student student = testRepository.findByEmail(Email);
+		    	if (student != null) {
+		    	return "email already exists";
+		    	}
 
-	    	} catch (Exception e) {
-	    	e.printStackTrace();
-	    	}
-	    	return "email doesn't exists";
-	    	}
-	    
-	    
-	    public Student getUserById(long id) {
-			Optional<Student> result =testRepository.findById(id);
-			if(result.isPresent()) {
-				return result.get();
-			}
-			else {
-				return null;
-			}	
-		}
+		    	}
+	    	catch (Exception e) {
+		    	e.printStackTrace();
+		    	}
+		    	return "email doesn't exists";
+		    	}
+	  
 	}
 	    
 
