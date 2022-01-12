@@ -1,51 +1,54 @@
 package com.test.testApplication.dto;
 
-
+import javax.persistence.Column;
 
 public class StudentDto {
 	
-	private long id;
-	
-	private String Firstname;
-	
-   private String Lastname;
-	
-	private String email;
-	
-	private String password;
-	
-	
-	public StudentDto(long id, String firstname, String lastname, String email, String password) {
+	private Long sid;
+
+	public StudentDto(Long sid, String firstname, String lastname, String email, String password) {
 		super();
-		this.id = id;
-		this.Firstname = firstname;
-		this.Lastname = lastname;
+		this.sid = sid;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.email = email;
 		this.password = password;
 	}
-
-	public long getId() {
-		return id;
+	
+	public StudentDto() {
+		
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	private String firstname;
+
+	private String lastname;
+
+	private String email;
+
+	private String password;
+
+	public Long getSid() {
+		return sid;
+	}
+
+	public void setSid(Long sid) {
+		this.sid = sid;
 	}
 
 	public String getFirstname() {
-		return Firstname;
+		return firstname;
 	}
 
 	public void setFirstname(String firstname) {
-		Firstname = firstname;
+		this.firstname = firstname;
 	}
 
 	public String getLastname() {
-		return Lastname;
+		return lastname;
 	}
 
 	public void setLastname(String lastname) {
-		Lastname = lastname;
+		this.lastname = lastname;
 	}
 
 	public String getEmail() {
@@ -56,9 +59,13 @@ public class StudentDto {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
 
-public StudentDto() {
-	
-}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 
 }

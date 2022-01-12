@@ -1,12 +1,16 @@
-package com.test.testApplication.controller;
+package com.test.testApplication.Controller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.boot.autoconfigure.web.ServerProperties.Tomcat.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
 import com.test.testApplication.dto.StudentDto;
 import com.test.testApplication.dto.TestResponse;
+import com.test.testApplication.entity.Student;
 import com.test.testApplication.service.TestService;
 
 @RestController
@@ -30,7 +36,6 @@ public class TestController {
 	
 	@Autowired
 	TestService testService;
-
 	
 	//save users
 	@PostMapping(value = "/save")
@@ -51,7 +56,15 @@ public class TestController {
     return this.testService.getAllStudent(); 
 	}
 	
+
+	//get users by id
+   @GetMapping(value = "/getusers/{id}")
+    public ResponseEntity<StudentDto> getUserById(@PathVariable(name = "id") Long id) {
+    StudentDto student = testService.getUserById(id);
+	return ResponseEntity.ok().body(student);
 	
+}
+
 	//delete users
 	@RequestMapping("/delete/{id}")
 	public ResponseEntity<TestResponse<?>> delete(@PathVariable("id") Long id)
@@ -63,19 +76,16 @@ public class TestController {
 
 	}
 	
+    //update users
+	@PutMapping(value="/update/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<StudentDto> updateStudent(@PathVariable(value = "id") Long id,
+                                                         @RequestBody StudentDto studentDto){
+	    //testResponse.setMessage ("update successfully");
+        return new ResponseEntity<>(testService.updateStudent(id, studentDto), HttpStatus.OK);
+    }
 	
-     //update users
-	@PutMapping(value = "/update")
-	    public ResponseEntity<TestResponse<?>>updateUsers(@RequestBody StudentDto studentDto){
-		TestResponse<StudentDto> testResponse = new TestResponse<>();
-		StudentDto savedUserResponse = testService.save(studentDto);
-		testResponse.setHttpsStatus (HttpStatus.OK);
-		testResponse.setMessage ("update successfully");
-		testResponse.setData(savedUserResponse);
-        return new ResponseEntity<>( testResponse  , HttpStatus.OK);
-		
-	}
-	
+
 	//validate email
 	@PostMapping(value = "/validateEmail")
 	public ResponseEntity<TestResponse<String>> Validateemail(@RequestBody StudentDto studentDto) {
