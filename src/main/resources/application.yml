@@ -8,7 +8,8 @@ spring:
   jpa:
      
     hibernate:
-      ddl-auto: update    properties:
+      ddl-auto: create
+    properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL55Dialect
 
@@ -21,5 +22,5 @@ spring:
     url: jdbc:mysql://localhost:3306/student_db?createDatabaseIfNotExist=true
    
     username: root
-    password: 1234
+    password: 
     driver-class-name: com.mysql.jdbc.Driver
