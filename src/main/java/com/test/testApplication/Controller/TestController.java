@@ -76,14 +76,18 @@ public class TestController {
 
 	}
 	
-    //update users
+   //update users
 	@PutMapping(value="/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<StudentDto> updateStudent(@PathVariable(value = "id") Long id,
-                                                         @RequestBody StudentDto studentDto){
-	    //testResponse.setMessage ("update successfully");
-        return new ResponseEntity<>(testService.updateStudent(id, studentDto), HttpStatus.OK);
-    }
+   public ResponseEntity<StudentDto> updateStudent(@PathVariable(value = "id") Long id,
+                                                       @RequestBody StudentDto studentDto){
+    //testResponse.setMessage ("update successfully");
+return new ResponseEntity<>(testService.updateStudent(id, studentDto), HttpStatus.OK);
+  }
+	
+	
+	
+  
 	
 
 	//validate email

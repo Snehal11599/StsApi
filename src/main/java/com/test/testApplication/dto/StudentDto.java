@@ -4,11 +4,11 @@ import javax.persistence.Column;
 
 public class StudentDto {
 	
-	private Long sid;
+	private Long id;
 
-	public StudentDto(Long sid, String firstname, String lastname, String email, String password) {
+	public StudentDto(Long id, String firstname, String lastname, String email, String password) {
 		super();
-		this.sid = sid;
+		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
@@ -27,12 +27,12 @@ public class StudentDto {
 
 	private String password;
 
-	public Long getSid() {
-		return sid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setSid(Long sid) {
-		this.sid = sid;
+	public void setId(Long sid) {
+		this.id = sid;
 	}
 
 	public String getFirstname() {

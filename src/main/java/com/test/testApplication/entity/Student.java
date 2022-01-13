@@ -18,14 +18,14 @@ public class Student {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "id")
-private Long sid;
+private Long id;
 
 @Column(name = "firstname")
 private String firstname;
 
-public Student(Long sid, String firstname, String lastname, String email, String password) {
+public Student(Long id, String firstname, String lastname, String email, String password) {
 	super();
-	this.sid = sid;
+	this .id = id;
 	this.firstname = firstname;
 	this.lastname = lastname;
 	this.email = email;
@@ -45,12 +45,12 @@ private String email;
 @Column(name = "password")
 private String password;
 
-public Long getSid() {
-	return sid;
+public Long getId() {
+	return id;
 }
 
-public void setSid(Long id) {
-	this.sid = sid;
+public void setId(Long id) {
+	this.id = id;
 }
 
 public String getFirstname() {
